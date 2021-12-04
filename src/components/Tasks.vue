@@ -1,23 +1,21 @@
 <template>
-  <header class="header">
-    <h1>{{ title }}</h1>
-    <Button text="Add Task" color="green" />
-    <Button text="Update Task" color="red" />
-    <Button text="Remove Task" color="blue" />
-  </header>
+  <div :key="task.id" v-for="task in tasks">
+    <Task @delete-task="$emit('delete-task', task.id)" :task="task" />
+  </div>
 </template>
 
 <script>
-import Button from "./Button";
+import Task from "./Task.vue";
 
 export default {
-  name: "Header",
+  name: "Tasks",
   props: {
-    title: String,
+    tasks: Array,
   },
   components: {
-    Button,
+    Task,
   },
+  emits: ["delete-task"],
 };
 </script>
 

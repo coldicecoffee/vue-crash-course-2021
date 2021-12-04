@@ -2,8 +2,8 @@
   <header class="header">
     <h1>{{ title }}</h1>
     <Button text="Add Task" color="green" />
-    <Button text="Update Task" color="red" />
-    <Button text="Remove Task" color="blue" />
+    <!-- <Button text="Update Task" color="red" />
+    <Button text="Remove Task" color="blue" /> -->
   </header>
 </template>
 
@@ -27,5 +27,6 @@ header {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 </style>
