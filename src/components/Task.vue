@@ -1,8 +1,11 @@
 <template>
-  <div :class="[task.reminder ? 'reminder' : '', 'task']">
+  <div
+    @click="$emit('toggle-reminder', task.id)"
+    :class="[task.reminder ? 'reminder' : '', 'task']"
+  >
     <div class="wrapper">
       <h3>{{ task.text }}</h3>
-      <button @click="onDelete(task.id)">remove</button>
+      <button @click="$emit('delete-task', task.id)">remove</button>
     </div>
     <p>{{ task.day }}</p>
   </div>
@@ -13,11 +16,6 @@ export default {
   name: "Task",
   props: {
     task: Object,
-  },
-  methods: {
-    onDelete(id) {
-      this.$emit("delete-task", id);
-    },
   },
 };
 </script>
