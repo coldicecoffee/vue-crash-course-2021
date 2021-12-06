@@ -1,5 +1,6 @@
 <template>
   <Header title="Test Tracker" />
+  <AddTask @add-task="addTask" />
   <Tasks
     @toggle-reminder="toggleReminder"
     @delete-task="deleteTask"
@@ -8,12 +9,14 @@
 </template>
 
 <script>
+import AddTask from "./components/AddTask.vue";
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
 
 export default {
   name: "App",
   components: {
+    AddTask,
     Header,
     Tasks,
   },
@@ -23,6 +26,9 @@ export default {
     };
   },
   methods: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
     deleteTask(id) {
       if (confirm("Are you sure?")) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
