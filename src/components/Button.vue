@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     onClick() {
-      console.log("click");
+      this.$emit("btn-click");
     },
   },
 };
@@ -27,6 +27,6 @@ a {
 }
 
 button {
-    min-height: 40px;
+  min-height: 40px;
 }
 </style>
