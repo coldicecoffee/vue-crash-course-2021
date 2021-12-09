@@ -39,6 +39,11 @@ export default {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       }
     },
+    async fetchTasks() {
+      const response = await fetch("http://localhost:5000/tasks");
+      const data = await response.json();
+      return data;
+    },
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
@@ -48,33 +53,8 @@ export default {
       );
     },
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doc Appointment",
-        day: "March 1st at 2:30 pm",
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: "Meeting at School",
-        day: "April 4th at 12:30 pm",
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: "Having a lunch with colleagues",
-        day: "June 23rd at 6:00 pm",
-        reminder: false,
-      },
-      {
-        id: 4,
-        text: "Going home at the moment",
-        day: "July 24th at 8:30 pm",
-        reminder: true,
-      },
-    ];
+  async created() {
+    this.tasks = await this.fetchTasks();
   },
 };
 </script>
