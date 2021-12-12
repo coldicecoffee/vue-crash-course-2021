@@ -33,11 +33,26 @@ export default {
   methods: {
     addTask(task) {
       this.tasks.push(task);
+
+      fetch("api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(task),
+      });
     },
-    deleteTask(id) {
+    async deleteTask(id) {
       if (confirm("Are you sure?")) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       }
+
+      fetch(`api/tasks/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
     },
     async fetchTasks() {
       const response = await fetch("api/tasks");
