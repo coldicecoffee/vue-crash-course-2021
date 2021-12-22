@@ -10,6 +10,8 @@
     @delete-task="deleteTask"
     :tasks="tasks"
   />
+  <router-view></router-view>
+  <Footer />
 </template>
 
 <script>
@@ -23,6 +25,7 @@ export default {
   components: {
     AddTask,
     Header,
+    Footer,
     Tasks,
   },
   data() {
