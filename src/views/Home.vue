@@ -17,10 +17,12 @@ export default {
     AddTask,
     Tasks,
   },
+  props: {
+    showAddTask: Boolean,
+  },
   data() {
     return {
       tasks: [],
-      showAddTask: false,
     };
   },
   methods: {
@@ -58,9 +60,6 @@ export default {
       const response = await fetch(`api/tasks/${id}`);
       const data = await response.json();
       return data;
-    },
-    toggleAddTask() {
-      this.showAddTask = !this.showAddTask;
     },
     async toggleReminder(id) {
       const taskToToggle = await this.fetchTask(id);

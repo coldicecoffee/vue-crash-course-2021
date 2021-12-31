@@ -4,7 +4,7 @@
     title="Test Tracker"
     :showAddTask="showAddTask"
   />
-  <router-view></router-view>
+  <router-view :showAddTask="showAddTask"></router-view>
   <Footer />
 </template>
 
@@ -20,7 +20,6 @@ export default {
   },
   data() {
     return {
-      tasks: [],
       showAddTask: false,
     };
   },
